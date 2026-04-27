@@ -1,5 +1,4 @@
 package br.ufscar.dc.dsw.controller;
-
 import br.ufscar.dc.dsw.dao.EditoraDAO;
 import br.ufscar.dc.dsw.domain.Editora;
 import java.io.IOException;
@@ -12,14 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/editoras/*")
 public class EditoraController extends HttpServlet {
     private EditoraDAO dao;
-
-    @Override
-    public void init() { dao = new EditoraDAO(); }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { doGet(req, resp); }
-
-    @Override
+    @Override public void init() { dao = new EditoraDAO(); }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getPathInfo();
         if (action == null) action = "";
@@ -34,4 +26,5 @@ public class EditoraController extends HttpServlet {
             }
         } catch (Exception e) { throw new ServletException(e); }
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { doGet(request, response); }
 }
